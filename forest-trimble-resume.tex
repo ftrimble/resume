@@ -3,22 +3,32 @@
 \usepackage{fancyhdr}
 \usepackage{amssymb}
 \usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
 
 \usepackage{blindtext}
+\usepackage{color}
 
 \textheight 9.5 in
 \textwidth 7 in
-\hoffset -1.25 in
+\hoffset -1.1 in
 \voffset -.75 in
 
 \headheight 36pt
 \headsep .25in
 
-\newcommand{\ii}{\indent \indent}
-\newcommand{\nitem}{\ii $\bullet$ }
 \newcommand{\headskip}{\vspace{.075in}}
 \newcommand{\miniskip}{\vspace{.03in}}
 \renewcommand{\headrulewidth}{0pt}
+
+\newcommand{\heading}[1]{
+  \miniskip
+  \noindent {\bf #1} \vspace{.05in} \hrule
+  \headskip
+}
+
+\newcommand{\subheading}[2]{
+  \noindent {\bf #1} \hfill \emph{#2}
+}
 
 \newenvironment{compactitemize} {
   \begin{itemize}[rightmargin=.25in, topsep=0pt]
@@ -34,12 +44,17 @@
 \pagestyle{fancy}
 \fancyfoot{}
 \fancyhead{}
-\fancyhead[L]{111 Trowbridge St, Apt 9\\ Cambridge, MA 02138}
-\fancyhead[C]{\bf {\huge Forest Trimble}}
-\fancyhead[R]{(774) 545-9538\\trimble.forest@gmail.com}
+\fancyhead[L]{111 Trowbridge St, Apt 9\\
+  Cambridge, MA 02138
+}
 
-\noindent {\bf EDUCATION} \vspace{.05in} \hrule
-\headskip
+\fancyhead[C]{\bf {\huge Forest Trimble}}
+\fancyhead[R]{(774) 545-9538\\
+  trimble.forest@gmail.com
+}
+
+
+\heading{EDUCATION}
 
 \noindent {\bf Rensselaer Polytechnic Institute, Troy, NY} \hfill
 \emph{2011-2014}\\
@@ -50,22 +65,19 @@ Cum Laude, 3.93 GPA} \\
 {\bf Acton Boxborough Regional High School, Acton, MA} \hfill
 \emph{2007-2011}
 
-\miniskip
-\noindent {\bf WORK EXPERIENCE} \vspace{.05in} \hrule
-\headskip
+\heading{WORK EXPERIENCE}
 
-\noindent {\bf Amazon.com} \hfill \emph{Cambridge, MA}
+\subheading{Amazon.com}{Cambridge, MA}
 
-\noindent {\bf Software Development Engineer II - Digital Products}
-\hfill \emph{July 2014 - Present}
+\subheading{Software Development Engineer II - Digital Products}{July 2014 - Present}
 
 \noindent \emph{Text Recognition experience for Firefly}
 \begin{compactitemize}
 \item Participated in a hack-day project for business card recognition
   that was successful enough to spur the creation of a new team to pursue
   the project more seriously.
-\item Delivered recognition algorithms for four new word types,
-  doubling the available types.
+\item Delivered NLU algorithms for four new word types, doubling the available
+  types.
 \item Implemented a positional homography between images based on a
   linear regression of text positions, and prototyped an algorithm
   that would take a set of free-form text zones and the homography to
@@ -95,21 +107,19 @@ Cum Laude, 3.93 GPA} \\
   information to the user with a given priority, timeout behavior, and
   display behavior that hooks into our pipeline of events to broadcast
   updates.
-\item Created a robust camera stack that utilizes RxJava to send
-  events when a camera frame meets requirements. This stack needed to
-  cope with some implementation issues of incomplete support from our
-  hardware vendor, which I resolved by creating a mapping
-  between two asynchronous streams of data using a custom data
-  structure that automatically closes items when they cannot be
-  matched within a given time frame.
+\item Created a robust camera stack that utilizes RxJava to send events when a
+  camera frame meets requirements. This stack needed to cope with some
+  implementation issues of incomplete support from our hardware vendor, which I
+  resolved by creating a mapping between two asynchronous streams of data using
+  a custom data structure that automatically removes and closes items when they
+  cannot be matched to cope with memory requirements.
 \end{compactitemize}
 
-\noindent {\bf Software Development Engineer Intern - Firefly}
-\hfill \emph{May - August 2013}
+\subheading{Software Development Engineer Intern - Firefly}{May - August 2013}
 
 \begin{compactitemize}
-\item Architected a classification and extraction service for a new
-  word type through our existing text recognition infrastructure. This
+\item Architected a largely regex-based classification and extraction service
+  for a new word type through our existing text recognition infrastructure. This
   word type was the first to span multiple lines of text.
 \item Multiline classification was wrought with problems due to
   failures in the underlying zoning algorithms. I simplified the whole
@@ -118,47 +128,35 @@ Cum Laude, 3.93 GPA} \\
   of unclassified text.
 \end{compactitemize}
 
-\noindent {\bf Rensselaer Center for Open Source Software} \hfill \emph{Troy, NY}
+\subheading{Rensselaer Center for Open Source Software}{Troy, NY}
 
-\noindent {\bf Creator/Developer - King Me} \hfill \emph{September
-  2013 - May 2014}
+\subheading{Founder/Developer - King Me}{September 2013 - May 2014}
 
+\noindent \emph{This is a personal project without managerial structure that I
+  got funding for through RPI. I created this project with two ideas to improve
+  over existing ride trackers: automated cycling route generation and
+  challenges, where you would challenge another athlete to who could perform the
+  best in a few day period using indices like power, heart rate, and segments.}
 \begin{compactitemize}
-\item Ideated and implemented an algorithm for generating a bicycle
-  route with a given starting point that is approximately a given
-  distance.
-\item Coordinated 5 developers to deliver a web interface and an Android
-  application, driving feature requests and prioritizations.
+\item Ideated and implemented a basic algorithm for generating routes by
+  approximating a circle of a given distance using pyroute to encapsulate Open
+  Street Maps data.
+\item Created a minimal Android app to track relevant ride data.
+\item Coordinated 5 other developers that were working on the web interface and
+  the Android application.
 \end{compactitemize}
 
-\noindent {\bf Developer - mkvsynth} \hfill \emph{Spring 2013}
+\subheading{SEPATON}{Marlborough, MA}
+
+\subheading{Software Developer Intern}{May - August 2012}
 
 \begin{compactitemize}
-\item Worked in a team of 4 developers to deliver a suite of linux
-  video processing tools.
-\item Delivered a simple GUI and a parser for the mkvsynth DSL.
+\item Wrote a GUI using Qt and C++ for troubleshooting and analyzing the core
+  deduplication algorithm.
+\item The GUI needed to be able to show this information retroactively on
+  customer databases, so I implemented a log parsing utility that converted the
+  human-readable (though not particularly human-useful) output of the logs into
+  data that could be displayed by the GUI.
 \end{compactitemize}
-
-\noindent {\bf SEPATON}\hfill \emph{Marlborough, MA}
-
-\noindent {\bf Software Developer Intern} \hfill \emph{May - August 2012}
-
-\begin{compactitemize}
-\item Wrote a GUI using Qt and C++ that enabled the
-troubleshooting and analysis of the company's core deduplication algorithm.
-\end{compactitemize}
-
-\noindent {\bf TOOLS} \vspace{.05in} \hrule
-\headskip
-
-\par
-\begingroup
-\leftskip2em
-\rightskip\leftskip
-\noindent Java, RxJava, Dagger, JUnit, Mockito, Robolectric, Bash,
-C++, lisp, C, Python, x86, Qt, \LaTeX, Make, Emacs, Linux, Android,
-OpenCV, Gradle, Ant, JNI, Git, JSON, XML
-\par
-\endgroup
 
 \end{document}
